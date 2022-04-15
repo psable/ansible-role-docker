@@ -1,4 +1,4 @@
-# docker
+# Docker
 
 Install and configure Docker package.
 
