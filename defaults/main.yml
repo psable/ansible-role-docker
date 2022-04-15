@@ -1,0 +1,105 @@
+---
+
+# Repositories and packages management
+# -----------------------------------------------------------------------------
+
+# Repositories
+docker_repository_update_cache: True
+docker_repository_cache_valid_time: 3600
+docker_repository_keys_retries: 3
+docker_repository_keys_delay: 10
+docker_repositories: "{{ _docker_repositories }}"
+docker_repositories_keys: "{{ _docker_repositories_keys }}"
+
+# Packages
+docker_packages: "{{ _docker_packages }}"
+docker_system_dependencies: "{{ _docker_system_dependencies }}"
+
+# Service settings
+docker_service_name: 'docker'
+docker_service_enabled: True
+docker_service_state: 'started'
+
+# Configuration
+docker_files_systemd_service_path: "{{ _docker_files_systemd_service_path }}"
+docker_paths:
+  files:
+    defaults:
+      path: '/etc/default/docker'
+    daemon_json:
+      path: '/etc/docker/daemon.json'
+    docker_compose:
+      path: '/usr/local/bin/docker-compose'
+    systemd_service:
+      path: "{{ docker_files_systemd_service_path }}"
+  dirs:
+    config:
+      path: '/etc/docker'
+    certs:
+      path: '/etc/docker/certs.d'
+    data:
+      path: '/var/lib/docker'
+
+
+# Sysconfig: network
+# -----------------------------------------------------------------------------
+docker_sysctl_opt: "{{ _docker_sysctl_opt }}"
+
+# Docker users
+# -----------------------------------------------------------------------------
+docker_users: []
+
+
+# Docker registries certificates
+# -----------------------------------------------------------------------------
+docker_registries_certificates: []
+
+
+# Docker daemon options
+# -----------------------------------------------------------------------------
+docker_daemon_options: "{{ _docker_daemon_options }}"
+_docker_daemon_options:
+  api-cors-header: ''
+  bridge: ''
+  bip: ''
+  debug: False
+  default-gateway: ''
+  default-gateway-v6: ''
+  cluster-store: ''
+  cluster-advertise: ''
+  cluster-store-opt: []
+  dns: []
+  dns-opt: []
+  dns-search: []
+  default-ulimit: []
+  exec-opt: []
+  exec-root: '/var/run/docker'
+  fixed-cidr: ''
+  fixed-cidr-v6: ''
+  group: 'docker'
+  data-root: '/var/lib/docker'
+  hosts: []
+  help: False
+  icc: True
+  insecure-registries: []
+  ip: '127.0.0.1'
+  ip-forward: True
+  ip-masq: True
+  iptables: True
+  ipv6: False
+  log-level: 'info'
+  label: []
+  log-driver: 'json-file'
+  log-opt: []
+  mtu: 0
+  pidfile: '/var/run/docker.pid'
+  registry-mirror: []
+  storage-driver: 'overlay2'
+  storage-opt: []
+
+
+# Docker Compose variables
+# -----------------------------------------------------------------------------
+docker_install_compose: false
+docker_compose_version: '1.28.0'
+docker_compose_path: "{{ docker_paths.files.docker_compose.path }}"

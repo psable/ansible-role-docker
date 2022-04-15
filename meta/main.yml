@@ -1,0 +1,25 @@
+---
+
+galaxy_info:
+  author: 'Pierre Sablé'
+  description: 'Ansible role to install and configure docker'
+  company: 'HOME'
+  license: 'MIT'
+  min_ansible_version: '2.7'
+  github_branch: 'master'
+  platforms:
+    - name: 'EL'
+      versions:
+        - '7'
+    - name: 'Debian'
+      versions:
+        - 'jessie'
+        - 'stretch'
+    - name: 'Ubuntu'
+      versions:
+        - 'xenial'
+        - 'bionic'
+        - 'Focal'
+  galaxy_tags:
+    - 'system'
+dependencies: []
